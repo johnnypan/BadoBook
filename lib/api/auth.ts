@@ -69,11 +69,13 @@ export const getSession = async () => {
 // Update user profile
 export const updateProfile = async (updates: {
     username?: string;
-    full_name?: string;
-    avatar_url?: string;
-    skill_level?: string;
-    bio?: string;
-    phone?: string;
+    full_name?: string | null;
+    avatar_url?: string | null;
+    gender?: string | null;
+    skill_level?: string | null;
+    play_style?: string | null;
+    bio?: string | null;
+    phone?: string | null;
 }) => {
     try {
         const { data: { user } } = await supabase.auth.getUser();
@@ -81,7 +83,8 @@ export const updateProfile = async (updates: {
 
         const { error } = await supabase
             .from('profiles')
-            .update(updates)
+            // @ts-ignore
+            .update(updates as any)
             .eq('id', user.id);
 
         if (error) throw error;

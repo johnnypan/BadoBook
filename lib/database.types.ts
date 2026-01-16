@@ -19,7 +19,9 @@ export interface Database {
                     username: string
                     full_name: string | null
                     avatar_url: string | null
+                    gender: string | null
                     skill_level: string | null
+                    play_style: string | null
                     bio: string | null
                     phone: string | null
                     created_at: string
@@ -30,7 +32,9 @@ export interface Database {
                     username: string
                     full_name?: string | null
                     avatar_url?: string | null
+                    gender?: string | null
                     skill_level?: string | null
+                    play_style?: string | null
                     bio?: string | null
                     phone?: string | null
                     created_at?: string
@@ -41,11 +45,135 @@ export interface Database {
                     username?: string
                     full_name?: string | null
                     avatar_url?: string | null
+                    gender?: string | null
                     skill_level?: string | null
+                    play_style?: string | null
                     bio?: string | null
                     phone?: string | null
                     created_at?: string
                     updated_at?: string
+                }
+            }
+            wallets: {
+                Row: {
+                    id: string
+                    user_id: string
+                    balance: number
+                    currency: string
+                    created_at: string
+                    updated_at: string
+                }
+                Insert: {
+                    id?: string
+                    user_id: string
+                    balance?: number
+                    currency?: string
+                    created_at?: string
+                    updated_at?: string
+                }
+                Update: {
+                    id?: string
+                    user_id?: string
+                    balance?: number
+                    currency?: string
+                    created_at?: string
+                    updated_at?: string
+                }
+            }
+            wallet_transactions: {
+                Row: {
+                    id: string
+                    wallet_id: string
+                    amount: number
+                    type: string
+                    description: string | null
+                    reference_id: string | null
+                    created_at: string
+                }
+                Insert: {
+                    id?: string
+                    wallet_id: string
+                    amount: number
+                    type: string
+                    description?: string | null
+                    reference_id?: string | null
+                    created_at?: string
+                }
+                Update: {
+                    id?: string
+                    wallet_id?: string
+                    amount?: number
+                    type?: string
+                    description?: string | null
+                    reference_id?: string | null
+                    created_at?: string
+                }
+            }
+            coupons: {
+                Row: {
+                    id: string
+                    code: string
+                    title: string
+                    description: string | null
+                    discount_type: string
+                    discount_value: number
+                    min_spend: number
+                    valid_from: string
+                    valid_until: string | null
+                    status: string
+                    created_at: string
+                }
+                Insert: {
+                    id?: string
+                    code: string
+                    title: string
+                    description?: string | null
+                    discount_type: string
+                    discount_value: number
+                    min_spend?: number
+                    valid_from?: string
+                    valid_until?: string | null
+                    status?: string
+                    created_at?: string
+                }
+                Update: {
+                    id?: string
+                    code?: string
+                    title?: string
+                    description?: string | null
+                    discount_type?: string
+                    discount_value?: number
+                    min_spend?: number
+                    valid_from?: string
+                    valid_until?: string | null
+                    status?: string
+                    created_at?: string
+                }
+            }
+            user_coupons: {
+                Row: {
+                    id: string
+                    user_id: string
+                    coupon_id: string
+                    status: string
+                    used_at: string | null
+                    created_at: string
+                }
+                Insert: {
+                    id?: string
+                    user_id: string
+                    coupon_id: string
+                    status?: string
+                    used_at?: string | null
+                    created_at?: string
+                }
+                Update: {
+                    id?: string
+                    user_id?: string
+                    coupon_id?: string
+                    status?: string
+                    used_at?: string | null
+                    created_at?: string
                 }
             }
             venues: {
